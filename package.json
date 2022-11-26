@@ -1,0 +1,34 @@
+{
+  "name": "@expo/expo",
+  "version": "1.4.0",
+  "private": true,
+  "author": "Expo",
+  "license": "MIT",
+  "scripts": {
+    "setup:docs": "./scripts/download-dependencies.sh",
+    "setup:native": "./scripts/download-dependencies.sh && ./scripts/setup-react-android.sh",
+    "postinstall": "yarn-deduplicate && expo-yarn-workspaces check-workspace-dependencies && yarn workspace @expo/cli prepare",
+    "lint": "eslint .",
+    "tsc": "echo 'You are trying to run \"tsc\" in the workspace root. Run it from an individual package instead.' && exit 1"
+  },
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "apps/test-suite/puppeteer-test",
+      "home",
+      "packages/*",
+      "packages/@expo/*"
+    ]
+  },
+  "resolutions": {
+    "react-native": "0.70.5",
+    "**/util": "~0.12.4"
+  },
+  "dependencies": {
+    "eslint": "^8.20.0",
+    "expo-yarn-workspaces": "*",
+    "jsc-android": "^250230.2.1",
+    "prettier": "^2.7.1",
+    "yarn-deduplicate": "^3.1.0"
+  }
+}
